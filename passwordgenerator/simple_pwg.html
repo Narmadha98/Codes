@@ -1,0 +1,43 @@
+<html>
+<head>
+<link rel="stylesheet" href="pwgst.css">
+</head>
+<body>
+<div class="container">
+<h2>Password Generator</h2>
+<section>
+<div class="container">
+<p> Select the Length </p>
+<select id='selLength'>
+<option value='4'>4</option>
+<option value='6'>6</option>
+<option value='8'>8</option>
+<option value='10'>10</option>
+</select>
+<i class="fa fa-sort-desc"></i>
+<button id="submit">Generate password</button>
+</div>
+</section>
+<section>
+<p> Your Password:</p> <input type="text" id="yourPw" />
+</section>
+
+    <script>
+        var char = '!@#$%^&*=-_0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        var selLength=document.getElementById("selLength");
+        var submit = document.getElementById("submit");
+        var yourPw = document.getElementById("yourPw");
+        submit.addEventListener("click", function (e) {
+            var characters = char;
+            yourPw.value = password(selLength.value, characters);
+        });
+        function password(l, characters) {
+            var pwd = '';
+            for (var i = 0; i < l; i++) {
+                pwd += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return pwd;
+        }
+    </script>
+</body>
+</html>
